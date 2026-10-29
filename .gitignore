@@ -1,0 +1,11 @@
+# Visual Studio / IDE
+.vs/
+*.user
+*.suo
+
+# build output
+bin/
+obj/
+publish/
+publish-installer/
+dist/
