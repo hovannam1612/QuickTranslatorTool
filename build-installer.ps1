@@ -53,6 +53,9 @@ if (-not (Test-Path $iconPath)) {
 
 # 2) self-contained single-file build (no .NET runtime needed on the target PC)
 if (Test-Path $publishDir) { Remove-Item $publishDir -Recurse -Force }
+# restore for win-x64 explicitly: an IDE restore without a runtime id leaves obj\project.assets.json without this target
+dotnet restore (Join-Path $root "QuickTranslator.csproj") -r win-x64
+if ($LASTEXITCODE -ne 0) { throw "dotnet restore failed" }
 dotnet publish (Join-Path $root "QuickTranslator.csproj") -c Release -r win-x64 -o $publishDir `
     -p:PublishSingleFile=true --self-contained true `
     -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `
