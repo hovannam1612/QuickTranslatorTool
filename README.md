@@ -55,6 +55,8 @@ Bộ cài cài theo từng người dùng (vào `%LOCALAPPDATA%\Programs\Quick T
 
 Thêm `-SkipInstaller` nếu chỉ cần file exe self-contained (không cần Inno Setup).
 
+Icon của app nằm ở một file duy nhất: [app.ico](app.ico). File này vừa được nhúng làm icon của file exe/shortcut/bộ cài, vừa được app đọc lúc chạy để làm icon khay hệ thống và icon cửa sổ (`IconFactory.cs`). Muốn đổi icon chỉ cần thay file `app.ico` (nên có các kích thước 16, 24, 32, 48, 256 px) rồi build lại. [tools/make-icon.ps1](tools/make-icon.ps1) chỉ là công cụ đã dùng để tạo `app.ico` ban đầu; script build chỉ gọi nó khi file `app.ico` bị mất.
+
 ## Quy trình phát hành và cập nhật phiên bản
 
 Cơ chế: mỗi bản phát hành là một **GitHub Release** có tag `vX.Y.Z` kèm file `QuickTranslator-Setup-X.Y.Z.exe`. Các máy đã cài app tự hỏi GitHub xem có release mới hơn không, tải bộ cài về và cài đè.
