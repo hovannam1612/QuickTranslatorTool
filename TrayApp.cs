@@ -31,7 +31,7 @@ internal sealed class TrayApp : ApplicationContext
 
         _tray = new NotifyIcon
         {
-            Icon = IconFactory.AppIcon,
+            Icon = IconFactory.TrayIcon,
             Text = "Quick Translator",
             Visible = true,
             ContextMenuStrip = BuildMenu(),
